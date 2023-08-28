@@ -14,13 +14,16 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="app">
-            {isGameStarted ? (
-                <Game onReturnToMenu={handleReturnToMenu} />
-            ) : (
-                <Menu onStartGame={handleStartGame} />
-            )}
-        </div>
+        <>
+            <div className="background-image"></div>
+            <div className="app">
+                {isGameStarted ? (
+                    <Game onReturnToMenu={handleReturnToMenu} />
+                ) : (
+                    <Menu onStartGame={handleStartGame} />
+                )}
+            </div>
+        </>
     );
 };
 
