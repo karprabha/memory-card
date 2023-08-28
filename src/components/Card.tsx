@@ -1,35 +1,35 @@
-import { useState } from "react";
 import { Pokemon } from "../types/Pokemon";
-import SkeletonCard from "./SkeletonCard";
 
 type handleCardSelectionFunction = (pokemonId: number) => void;
 
 interface CardProps {
     handleCardSelection: handleCardSelectionFunction;
     data: Pokemon;
+    isFlipped: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ data, handleCardSelection }) => {
+const Card: React.FC<CardProps> = ({
+    isFlipped,
+    data,
+    handleCardSelection,
+}) => {
     const { name, id, sprites } = data;
     const spriteUrl = sprites.other.dream_world.front_default;
 
-    const [imageLoaded, setImageLoaded] = useState(false);
-
-    const handleImageLoad = () => {
-        setImageLoaded(true);
-    };
-
     return (
-        <div className="card">
-            <img
-                src={spriteUrl}
-                alt={`${name} sprite`}
-                onLoad={handleImageLoad}
-                onClick={() => handleCardSelection(id)}
-                style={{ display: imageLoaded ? "block" : "none" }}
-            />
-            {!imageLoaded && <SkeletonCard />}
-            {imageLoaded && <h2>{name}</h2>}
+        <div className={`card ${isFlipped ? "flip" : ""}`}>
+            <div className="card-inner">
+                <div className="card-face card-front">
+                    <img
+                        src={spriteUrl}
+                        alt={`${name} sprite`}
+                        onClick={() => handleCardSelection(id)}
+                    />
+
+                    <h2>{name}</h2>
+                </div>
+                <div className="card-face card-back"></div>
+            </div>
         </div>
     );
 };

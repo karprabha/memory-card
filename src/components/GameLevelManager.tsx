@@ -28,6 +28,7 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
 }) => {
     const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isFlipped, setIsFlipped] = useState(false);
     const [selectedPokemonIds, setSelectedPokemonIds] = useState<number[]>([]);
     const [highestScore, setHighestScore] = useState<number>(() => {
         const storedHighestScore = localStorage.getItem("highestScore");
@@ -61,6 +62,18 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
         }
     }, [currentScore, highestScore]);
 
+    useEffect(() => {
+        if (isFlipped) {
+            setTimeout(() => {
+                shufflePokemonData();
+                setTimeout(() => {
+                    setIsFlipped(false);
+                }, 500);
+            }, 1000);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isFlipped]);
+
     const saveHighestScoreToLocalStorage = (score: number) => {
         localStorage.setItem("highestScore", score.toString());
     };
@@ -85,7 +98,7 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
         if (selectedPokemonIds.length === numberOfPokemonToFetch)
             onCompleteLevel();
 
-        shufflePokemonData();
+        setIsFlipped(true);
     };
 
     return (
@@ -100,6 +113,7 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
                     : pokemonData.map((pokemon) => (
                           <Card
                               key={pokemon.id}
+                              isFlipped={isFlipped}
                               handleCardSelection={handleCardSelection}
                               data={pokemon}
                           />
