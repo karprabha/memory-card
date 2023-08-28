@@ -1,28 +1,70 @@
 import { useState } from "react";
 import GameLevelManager from "./components/GameLevelManager";
 import { levels } from "./config/levelsConfig";
+import GameModal from "./components/GameModal";
 
 const App = () => {
     const [currentLevel, setCurrentLevel] = useState(0);
     const [currentScore, setCurrentScore] = useState(0);
     const [rerenderKey, setRerenderKey] = useState(0);
+    const [gameOver, setGameOver] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalMessage, setModalMessage] = useState("");
 
     const handleGameOver = () => {
-        console.log("game over");
+        setGameOver(true);
 
-        setCurrentScore(0);
-        setCurrentLevel(0);
-        setRerenderKey((prevKey) => prevKey + 1);
+        setModalTitle("Game Over");
+        setModalMessage("You lost the game. Try again!");
+        setIsModalOpen(true);
     };
 
     const handleLevelCompletion = () => {
-        if (currentLevel === levels.length) console.log("game won");
-        else setCurrentLevel((prevLevel) => prevLevel + 1);
-        setRerenderKey((prevKey) => prevKey + 1);
+        if (currentLevel === levels.length - 1) {
+            setGameOver(true);
+            setModalTitle("Game Completed");
+            setModalMessage("Congratulations! You completed all levels.");
+        } else {
+            setModalTitle("Level Completed");
+            setModalMessage("Congratulations! You completed the level.");
+        }
+
+        setIsModalOpen(true);
     };
 
     const handleScoreUpdate = () => {
         setCurrentScore((prevScore) => prevScore + 1);
+    };
+
+    const handleReturnToMenu = () => {
+        console.log("Return to menu logic");
+        handleModalClose();
+    };
+
+    const handlePlayAgain = () => {
+        console.log("Play again logic");
+        setCurrentScore(0);
+        setCurrentLevel(0);
+        setGameOver(false);
+        handleModalClose();
+    };
+
+    const handleContinuePlaying = () => {
+        console.log("Continue playing logic");
+        setCurrentLevel((prevLevel) => prevLevel + 1);
+        handleModalClose();
+    };
+
+    const handleModalClose = () => {
+        setIsModalOpen(false);
+        setRerenderKey((prevKey) => prevKey + 1);
+    };
+
+    const modalActions = {
+        returnToMenu: handleReturnToMenu,
+        playAgain: handlePlayAgain,
+        continuePlaying: handleContinuePlaying,
     };
 
     return (
@@ -39,6 +81,22 @@ const App = () => {
                 onGameOver={handleGameOver}
                 onUpdateScore={handleScoreUpdate}
                 onCompleteLevel={handleLevelCompletion}
+            />
+
+            <GameModal
+                isOpen={isModalOpen}
+                title={modalTitle}
+                message={modalMessage}
+                primaryButtonLabel="Return to Menu"
+                secondaryButtonLabel={
+                    gameOver ? "Play Again" : "Continue Playing"
+                }
+                onPrimaryButtonClick={modalActions.returnToMenu}
+                onSecondaryButtonClick={
+                    gameOver
+                        ? modalActions.playAgain
+                        : modalActions.continuePlaying
+                }
             />
         </>
     );
