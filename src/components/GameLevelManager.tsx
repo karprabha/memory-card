@@ -46,6 +46,7 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
                 );
                 setPokemonData(data);
                 setIsLoading(false);
+                setIsFlipped(true);
             } catch (error) {
                 console.error("Error fetching Pokemon data:", error);
                 setIsLoading(false);

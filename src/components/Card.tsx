@@ -1,4 +1,5 @@
 import { Pokemon } from "../types/Pokemon";
+import kebabToPascalWithSpaces from "../utils/kebabToPascalCaseWithSpaces";
 
 type handleCardSelectionFunction = (pokemonId: number) => void;
 
@@ -26,7 +27,7 @@ const Card: React.FC<CardProps> = ({
                         onClick={() => handleCardSelection(id)}
                     />
 
-                    <h2>{name}</h2>
+                    <h2>{kebabToPascalWithSpaces(name)}</h2>
                 </div>
                 <div className="card-face card-back"></div>
             </div>
