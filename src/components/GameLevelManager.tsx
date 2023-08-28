@@ -1,22 +1,38 @@
 import { useEffect, useState } from "react";
 import { Pokemon } from "../types/Pokemon";
+import { shuffleArray } from "../utils/arrayUtils";
 import randomPokemonFetcher from "../utils/randomPokemonFetcher";
 import Card from "./Card";
 import SkeletonCard from "./SkeletonCard";
 
+type onGameOverFunction = () => void;
+type onUpdateScoreFunction = () => void;
+type onCompleteLevelFunction = () => void;
+
 interface GameLevelManagerProps {
     numberOfPokemonToFetch: number;
     highestAllowedPokemonId: number;
+    currentScore: number;
+    onGameOver: onGameOverFunction;
+    onUpdateScore: onUpdateScoreFunction;
+    onCompleteLevel: onCompleteLevelFunction;
 }
 
 const GameLevelManager: React.FC<GameLevelManagerProps> = ({
     numberOfPokemonToFetch,
     highestAllowedPokemonId,
+    currentScore,
+    onGameOver,
+    onUpdateScore,
+    onCompleteLevel,
 }) => {
     const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [currentScore, setCurrentScore] = useState(0);
     const [selectedPokemonIds, setSelectedPokemonIds] = useState<number[]>([]);
+    const [highestScore, setHighestScore] = useState<number>(() => {
+        const storedHighestScore = localStorage.getItem("highestScore");
+        return storedHighestScore ? parseInt(storedHighestScore) : 0;
+    });
 
     const loadingSkeletons = Array.from({ length: numberOfPokemonToFetch });
 
@@ -38,38 +54,44 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
         fetchData();
     }, [highestAllowedPokemonId, numberOfPokemonToFetch]);
 
-    const shufflePokemonData = () => {
-        const shuffledData = [...pokemonData];
-        for (let i = shuffledData.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffledData[i], shuffledData[j]] = [
-                shuffledData[j],
-                shuffledData[i],
-            ];
+    useEffect(() => {
+        if (currentScore > highestScore) {
+            setHighestScore(currentScore);
+            saveHighestScoreToLocalStorage(currentScore);
         }
+    }, [currentScore, highestScore]);
+
+    const saveHighestScoreToLocalStorage = (score: number) => {
+        localStorage.setItem("highestScore", score.toString());
+    };
+
+    const shufflePokemonData = () => {
+        const shuffledData = shuffleArray(pokemonData);
         setPokemonData(shuffledData);
     };
 
     const handleCardSelection = (pokemonId: number) => {
         console.log(pokemonId, selectedPokemonIds);
 
-        if (selectedPokemonIds.indexOf(pokemonId) !== -1)
-            console.log("game over");
-        else {
+        if (selectedPokemonIds.includes(pokemonId)) {
+            setSelectedPokemonIds([]);
+            onGameOver();
+        } else {
             setSelectedPokemonIds([...selectedPokemonIds, pokemonId]);
             selectedPokemonIds.push(pokemonId);
-            setCurrentScore((prevScore) => prevScore + 1);
+            onUpdateScore();
         }
 
         if (selectedPokemonIds.length === numberOfPokemonToFetch)
-            console.log("game won");
+            onCompleteLevel();
 
         shufflePokemonData();
     };
 
     return (
         <>
-            <h1>{currentScore}</h1>
+            <h1>Current Score: {currentScore}</h1>
+            <h1>Highest Score: {highestScore}</h1>
             <div className="card-container">
                 {isLoading
                     ? loadingSkeletons.map((_, index) => (
