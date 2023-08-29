@@ -21,6 +21,10 @@ Challenge your memory with the Pokemon Memory Game, a fun and interactive web-ba
 3.  Match pairs of Pokemon to increase your score.
 4.  Complete all levels to win the game.
 
+## Dependency Graph
+
+![Dependency Graph](./dependencygraph.svg)
+
 ## Installation
 
 1.  Clone the repository:
@@ -60,10 +64,6 @@ I have plans on implementing following features in future:
 -   **Timer**: Add a timer to challenge players to complete the game within a certain time limit.
 -   **Sound Effects**: Incorporate sound effects for card flips, matches, and game over.
 -   **Leaderboard**: Implement a leaderboard to display high scores of different players.
-
-## Dependency Graph
-
-![Dependency Graph](./dependencygraph.svg)
 
 ## Contributing
 
