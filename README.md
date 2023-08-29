@@ -30,13 +30,13 @@ Challenge your memory with the Pokemon Memory Game, a fun and interactive web-ba
 1.  Clone the repository:
 
     ```bash
-    git clone https://github.com/your-username/memory-card
+    git clone https://github.com/karprabha/memory-card
     ```
 
 2.  Navigate to the project directory:
 
     ```bash
-    cd pokemon-memory-game
+    cd memory-card
     ```
 
 3.  Install dependencies:
