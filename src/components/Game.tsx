@@ -2,6 +2,8 @@ import { useState } from "react";
 import GameLevelManager from "./GameLevelManager";
 import { levels } from "../config/levelsConfig";
 import GameModal from "./GameModal";
+import sadPikachuURL from "../assets/gif/pikachu-1.gif";
+import happyPikachuURL from "../assets/gif/pikachu-2.gif";
 
 interface GameProps {
     onReturnToMenu: () => void;
@@ -14,12 +16,14 @@ const Game: React.FC<GameProps> = ({ onReturnToMenu }) => {
     const [gameOver, setGameOver] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
+    const [modalGIFURL, setModalGIFURL] = useState("");
     const [modalMessage, setModalMessage] = useState("");
 
     const handleGameOver = () => {
         setGameOver(true);
 
         setModalTitle("Game Over");
+        setModalGIFURL(sadPikachuURL);
         setModalMessage("You lost the game. Try again!");
         setIsModalOpen(true);
     };
@@ -28,9 +32,11 @@ const Game: React.FC<GameProps> = ({ onReturnToMenu }) => {
         if (currentLevel === levels.length - 1) {
             setGameOver(true);
             setModalTitle("Game Completed");
+            setModalGIFURL(happyPikachuURL);
             setModalMessage("Congratulations! You completed all levels.");
         } else {
             setModalTitle("Level Completed");
+            setModalGIFURL(happyPikachuURL);
             setModalMessage("Congratulations! You completed the level.");
         }
 
@@ -90,6 +96,7 @@ const Game: React.FC<GameProps> = ({ onReturnToMenu }) => {
 
             <GameModal
                 isOpen={isModalOpen}
+                imgURL={modalGIFURL}
                 title={modalTitle}
                 message={modalMessage}
                 primaryButtonLabel="Return to Menu"

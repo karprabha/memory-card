@@ -1,6 +1,7 @@
 interface GameModalProps {
     isOpen: boolean;
     title: string;
+    imgURL: string;
     message: string;
     primaryButtonLabel: string;
     secondaryButtonLabel: string;
@@ -11,6 +12,7 @@ interface GameModalProps {
 const GameModal: React.FC<GameModalProps> = ({
     isOpen,
     title,
+    imgURL,
     message,
     primaryButtonLabel,
     secondaryButtonLabel,
@@ -25,7 +27,9 @@ const GameModal: React.FC<GameModalProps> = ({
         <div className="modal-overlay">
             <div className="modal">
                 <h2>{title}</h2>
+                <img src={imgURL} alt="" />
                 <p>{message}</p>
+
                 <div className="modal-buttons">
                     <button onClick={onPrimaryButtonClick}>
                         {primaryButtonLabel}
