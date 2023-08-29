@@ -4,11 +4,7 @@ import fetchData from "./fetchData";
 const randomPokemonFetcher = async (count: number, maxId: number) => {
     const randomPokemonIds = generateUniqueRandomNumbers(count, maxId);
     const pokemonDataPromises = randomPokemonIds.map(async (pokemonId) => {
-        const url =
-            "https://corsproxy.io/?" +
-            encodeURIComponent(
-                `https://pokeapi.co/api/v2/pokemon/${pokemonId}`
-            );
+        const url = `https://pokeapi.co/api/v2/pokemon/${pokemonId}`;
         try {
             const data = await fetchData(url);
             return data;
