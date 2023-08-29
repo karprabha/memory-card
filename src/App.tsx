@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Game from "./components/Game";
 import Menu from "./components/Menu";
 import pikachuURL from "./assets/images/pikachu.png";
+import audioURL from "./assets/audio/music-1.mp3";
 
 const App: React.FC = () => {
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isGameStarted, setIsGameStarted] = useState(false);
     const [isHelpVisible, setIsHelpVisible] = useState(false);
 
@@ -19,6 +22,18 @@ const App: React.FC = () => {
         setIsHelpVisible(!isHelpVisible);
     };
 
+    const toggleAudio = () => {
+        if (!audioRef.current) return;
+
+        if (!isAudioPlaying) {
+            audioRef.current.play();
+        } else {
+            audioRef.current.pause();
+        }
+
+        setIsAudioPlaying(!isAudioPlaying);
+    };
+
     return (
         <>
             <div className="background-image"></div>
@@ -30,9 +45,11 @@ const App: React.FC = () => {
                 )}
             </div>
             <div className="game-options-container">
-                <div className="music-btn">
-                    <button type="button">🔊</button>
-                    {/* <button type="button">🔈</button> */}
+                <div className="music">
+                    <button type="button" onClick={toggleAudio}>
+                        {isAudioPlaying ? "🔊" : "🔈"}
+                    </button>
+                    <audio ref={audioRef} src={audioURL} loop />
                 </div>
                 <div className="help">
                     <div
