@@ -6,7 +6,7 @@ import audioURL from "./assets/audio/music-1.mp3";
 
 const App: React.FC = () => {
     const audioRef = useRef<HTMLAudioElement | null>(null);
-    const [isAudioPlaying, setIsAudioPlaying] = useState(true);
+    const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [isGameStarted, setIsGameStarted] = useState(false);
     const [isHelpVisible, setIsHelpVisible] = useState(false);
 
