@@ -4,6 +4,7 @@ import { shuffleArray } from "../utils/arrayUtils";
 import randomPokemonFetcher from "../utils/randomPokemonFetcher";
 import Card from "./Card";
 import SkeletonCard from "./SkeletonCard";
+import logoURL from "../assets/images/logo.png";
 
 type onGameOverFunction = () => void;
 type onUpdateScoreFunction = () => void;
@@ -109,7 +110,11 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
         <>
             <div className="navigation-and-score-panel">
                 <div className="navigation-container">
-                    <h1 onClick={onReturnToMenu}>Pokemon</h1>
+                    <img
+                        src={logoURL}
+                        alt="pokemon-logo"
+                        onClick={onReturnToMenu}
+                    />
                 </div>
                 <div className="score-card">
                     <h2>Score: {currentScore}</h2>

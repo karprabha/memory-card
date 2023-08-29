@@ -1,5 +1,10 @@
 @use "partials";
 
+@font-face {
+    font-family: Pokemon;
+    src: url("../assets/fonts/pokemon-1.ttf");
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -10,6 +15,23 @@
     height: 100vh;
 
     font-family:
+        Pokemon,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        Ubuntu,
+        Cantarell,
+        "Open Sans",
+        "Helvetica Neue",
+        sans-serif;
+}
+
+button {
+    font-family:
+        Pokemon,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,

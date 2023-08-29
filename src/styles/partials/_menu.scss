@@ -1,6 +1,6 @@
 .menu {
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -12,8 +12,12 @@
     min-width: 320px;
 
     img {
-        width: 100%;
+        width: 70%;
         height: auto;
+    }
+
+    .logo {
+        margin-bottom: 10px;
     }
 
     .menu-btn-container {
@@ -33,7 +37,7 @@
             padding: 2%;
             width: 70%;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1.5rem;
             font-weight: bold;
             text-align: center;
             text-decoration: none;

@@ -6,8 +6,10 @@
     margin: 20px;
 
     .navigation-container {
-        font-size: 2.2rem;
         cursor: pointer;
+        img {
+            width: 300px;
+        }
     }
 
     .score-card {
