@@ -83,7 +83,10 @@ This project wouldn't have been possible without the contributions of various re
 -   **PokeAPI**: The data for the Pokemon used in the game is sourced from [PokeAPI](https://pokeapi.co/), allowing us to bring the Pokemon universe to life.
 -   **Pocket Monk Font by Chequered Ink**: A big shoutout to [Chequered Ink](https://www.fontspace.com/chequered-ink) for creating the charming "Pocket Monk" font that adds a unique touch to our game's design.
 -   **Relaxing Music For 20 Seconds**: The soothing background music is sourced from the YouTube video [Relaxing Music For 20 Seconds](https://www.youtube.com/watch?v=IA0PHWAALDQ) by Snowflake crystal girl. It enhances the gaming experience with a calming ambiance.
--   **Wallpapers.com**: We're grateful to [wallpapers.com](https://wallpapers.com/) for providing high-quality images, icons, and wallpapers that contribute to the visual appeal of the game. Special thanks to [Freepik](https://www.freepik.com/free-vector/flat-design-comics-style-background_11740840.htm#query=pokemon%20background&position=1&from_view=search&track=ais) for the wonderful comics-style background.
+-   **Wallpapers.com**: We're grateful to [wallpapers.com](https://wallpapers.com/) for providing high-quality images, icons, and wallpapers that contribute to the visual appeal of the game.
+
+-   **Freepick.com**: Special thanks to [Freepik](https://www.freepik.com/free-vector/flat-design-comics-style-background_11740840.htm#query=pokemon%20background&position=1&from_view=search&track=ais) for the wonderful comics-style background.
+-   **Giphy.com**: Thanks to [Giphy](https://giphy.com/) for the gifs
 -   **Clipartmax**: Additional appreciation to [Clipartmax](https://www.clipartmax.com/) for offering clipart resources that added creative elements to our game's aesthetics.
 
 Please note that the resources used in this project are for educational purposes only. This project is not intended for commercial use or distribution. We do not intend to sell, profit from, or violate any copyrights or licenses associated with these resources. We sincerely appreciate the contributions of these resources and their creators.
