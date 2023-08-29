@@ -1,0 +1,34 @@
+.navigation-and-score-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+
+    .navigation-container {
+        font-size: 2.2rem;
+        cursor: pointer;
+    }
+
+    .score-card {
+        background-color: #f4e842;
+
+        color: #333333;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        min-width: 210px;
+
+        box-shadow:
+            0 0 10px #3498db,
+            0 0 20px #3498db,
+            0 0 30px #3498db;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .navigation-and-score-panel {
+        justify-content: center;
+    }
+}

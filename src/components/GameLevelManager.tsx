@@ -7,6 +7,7 @@ import SkeletonCard from "./SkeletonCard";
 
 type onGameOverFunction = () => void;
 type onUpdateScoreFunction = () => void;
+type onReturnToMenuFunction = () => void;
 type onCompleteLevelFunction = () => void;
 
 interface GameLevelManagerProps {
@@ -15,6 +16,7 @@ interface GameLevelManagerProps {
     currentScore: number;
     onGameOver: onGameOverFunction;
     onUpdateScore: onUpdateScoreFunction;
+    onReturnToMenu: onReturnToMenuFunction;
     onCompleteLevel: onCompleteLevelFunction;
 }
 
@@ -24,6 +26,7 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
     currentScore,
     onGameOver,
     onUpdateScore,
+    onReturnToMenu,
     onCompleteLevel,
 }) => {
     const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
@@ -104,8 +107,15 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
 
     return (
         <>
-            <h1>Current Score: {currentScore}</h1>
-            <h1>Highest Score: {highestScore}</h1>
+            <div className="navigation-and-score-panel">
+                <div className="navigation-container">
+                    <h1 onClick={onReturnToMenu}>Pokemon</h1>
+                </div>
+                <div className="score-card">
+                    <h2>Score: {currentScore}</h2>
+                    <h2>Best Score: {highestScore}</h2>
+                </div>
+            </div>
             <div className="card-container">
                 {isLoading
                     ? loadingSkeletons.map((_, index) => (

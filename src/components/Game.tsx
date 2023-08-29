@@ -91,6 +91,7 @@ const Game: React.FC<GameProps> = ({ onReturnToMenu }) => {
                 currentScore={currentScore}
                 onGameOver={handleGameOver}
                 onUpdateScore={handleScoreUpdate}
+                onReturnToMenu={onReturnToMenu}
                 onCompleteLevel={handleLevelCompletion}
             />
 
