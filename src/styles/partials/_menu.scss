@@ -1,7 +1,50 @@
 .menu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    width: 80%;
+    max-width: 620px;
+    min-width: 320px;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .menu-btn-container {
+        position: absolute;
+        background-color: white;
+        width: 100%;
+        height: 50%;
+        top: 80%;
+        z-index: -1;
+        border-radius: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        button {
+            margin: 5%;
+            padding: 2%;
+            width: 70%;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            background-color: #3498db;
+
+            &:hover {
+                background-color: #2980b9;
+            }
+        }
+    }
 }
