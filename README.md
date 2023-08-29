@@ -4,11 +4,11 @@
 
 ## Description
 
-Challenge your memory with the Pokemon Memory Game, a fun and interactive web-based game built using React. Flip over the cards to match pairs of Pokemon and test your memory skills. The game features multiple levels, a scoring system, and a modal to show your progress.
+Challenge your memory with the Pokemon Memory Game, a fun and interactive web-based game built using React. Flip over the cards, don't click on the same card twice and test your memory skills. The game features multiple levels, a scoring system, and a modal to show your progress.
 
 ## Features
 
--   **Card Matching**: Flip over cards to find matching pairs of Pokemon.
+-   **Card Matching**: Flip over cards and don't click on the same card twice.
 -   **Multiple Levels**: Progress through different levels with increasing difficulty.
 -   **Scoring System**: Keep track of your current score and highest score.
 -   **Modal Feedback**: Receive feedback through modals for game completion or loss.
@@ -18,7 +18,7 @@ Challenge your memory with the Pokemon Memory Game, a fun and interactive web-ba
 
 1.  Access the [Pokemon Memory Game Live](https://pokemon-memorycard-game.netlify.app/).
 2.  Click on the cards to flip them and reveal the Pokemon.
-3.  Match pairs of Pokemon to increase your score.
+3.  Don't click on the same card twice to increase your score.
 4.  Complete all levels to win the game.
 
 ## Dependency Graph
