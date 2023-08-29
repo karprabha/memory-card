@@ -74,7 +74,7 @@ const GameLevelManager: React.FC<GameLevelManagerProps> = ({
                 setTimeout(() => {
                     setIsFlipped(false);
                 }, 500);
-            }, 1000);
+            }, 500);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFlipped]);
