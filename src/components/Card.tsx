@@ -15,7 +15,9 @@ const Card: React.FC<CardProps> = ({
     handleCardSelection,
 }) => {
     const { name, id, sprites } = data;
-    const spriteUrl = sprites.other.dream_world.front_default;
+    const spriteUrl =
+        "https://corsproxy.io/?" +
+        encodeURIComponent(sprites.other.dream_world.front_default);
 
     return (
         <div className={`card ${isFlipped ? "flip" : ""}`}>
