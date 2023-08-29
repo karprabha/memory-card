@@ -26,20 +26,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    font-size: 1.1rem;
+    font-size: 1rem;
 
     img {
         width: 180px;
-        height: 180px;
+        height: 210px;
+        background-color: rgba($color: #ffffff, $alpha: 0.7);
     }
 }
 
 .card-front {
-    background-color: #f1f1f1;
-    border: 2px solid black;
     box-sizing: border-box;
-
+    background-color: #f4e842;
+    border-radius: 10px;
     text-align: center;
+
+    color: #333333;
 }
 
 .card-back {
