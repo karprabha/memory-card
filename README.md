@@ -3,7 +3,7 @@
 -   Live: [Pokemon Memory Game Live](https://pokemon-memorycard-game.netlify.app/)
 
 ![homescreen-img](./docs/images/1.png)
-![homescreen-img](./docs/images/2.png)
+![gamescreen-img](./docs/images/2.png)
 
 ## Description
 
